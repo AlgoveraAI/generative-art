@@ -5,9 +5,8 @@ Algovera is a community working to facilitate and accelerate the development of 
 
 - [👪 Community](#-community)
 - [🏗 Initial Setup](#-initial-setup)
-- [🎨 Generative Art](#-generative-art)
-- [Decentralized AI](#-decentralized-ai)
-- [🦈 Resources](#-resources)
+- [🎨 Generative AI for Art on Web3](#-generative-ai-for-art-on-web3)
+- [🤖 Resources](#-resources)
 - [🏛 License](#-license)
 
 # 👪 Community
@@ -21,12 +20,7 @@ Algovera is a community working to facilitate and accelerate the development of 
 
 Algovera is a community of individuals working to facilitate and accelerate the development of decentralised AI products and research.
 
-- Website: [Algovera](https://www.algovera.ai/)
-- Notion: [Algovera](https://algovera.notion.site/)
-- Discord: [Algovera](https://discord.gg/e65RuHSDS5)
-- Calendar: [Algovera](https://calendar.google.com/calendar/embed?src=c_4qajdfj4imie9cpnkbvkrc7ri4%40group.calendar.google.com)
-- Twitter: [@AlgoveraAI](https://twitter.com/AlgoveraAI)
-- YouTube: [Algovera](https://www.youtube.com/channel/UC2A5iUpP6k52ZZmC8LFj1IA)
+[Website](https://www.algovera.ai/) | [Notion](https://algovera.notion.site/) | [Discord](https://discord.gg/e65RuHSDS5) | [Calendar](https://calendar.google.com/calendar/embed?src=c_4qajdfj4imie9cpnkbvkrc7ri4%40group.calendar.google.com) | [Twitter](https://twitter.com/AlgoveraAI) | [YouTube](https://www.youtube.com/channel/UC2A5iUpP6k52ZZmC8LFj1IA) |
 
 # 🏗 Initial Setup 
 
@@ -43,8 +37,7 @@ cd generative-art
 
 Many artists in Web3 use generative AI. This often involves re-training a model such as [StyleGAN2](https://github.com/NVlabs/stylegan2-ada-pytorch) on a dataset collected by the artist, and publishing the output images on a blockchain as NFTs. Experimenting with newly-collated datasets and training procedures is time-consuming and expensive, meaning that artists are highly protective of these assets. However, recent decentralized AI technologies may enable artists to monetize their datasets and models while maintaining control and privacy. Furthermore, interesting collaborations could take place between artists on different combintations of datasets and models (like a data union for artists). Rather than sharing a download link to data, the artist would permit another artist's algorithm to come to the location of their dataset and run some training code (Compute-to-Data), before returning the trained model. By publishing datasets and algorithms on the Ocean [marketplace](https://market.oceanprotocol.com/) , NFT enthusiasts could also buy or provide liquidity for the algorithm and data tokens (as well as buying the outputs of the models). This project will provide a Proof of Concept (PoC) for bringing generative models on-chain, and show artists that more value can be unlocked by publishing their models (and datasets) on Ocean.
 
-
-# 🦈 Resources
+# 🤖 Resources
 
 Here are further resources.
 
@@ -53,3 +46,6 @@ Here are further resources.
 - What are the benefits of [decentralized AI](https://a16z.com/2020/07/24/long-tail-problem-in-a-i/)?
 - How do data science workers [collaborate](https://arxiv.org/abs/2001.06684)?
 
+# 🏛 License
+
+The license is MIT. [Details](LICENSE)
