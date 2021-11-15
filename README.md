@@ -31,6 +31,18 @@ Open a new terminal and:
 #clone repo
 git clone https://github.com/AlgoveraAI/generative-art.git
 cd generative-art 
+
+#create a virtual environment
+python3 -m venv venv
+
+#activate env
+source venv/bin/activate
+
+#Install the ocean.py library. Install wheel first to avoid errors.
+pip install wheel
+pip install ocean-lib
+
+pip install gdown
 ```
 
 # 🎨 Generative AI for Art on Web3
