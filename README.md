@@ -1,3 +1,5 @@
+<img src="images/GAN-training.png" width="100%">
+
 # Algovera: Generative AI for Art NFTs
 Algovera is a community working to facilitate and accelerate the development of decentralised AI applications and research. The workflow and practices for machine learning engineers become quite different with recently-maturing technologies such as private AI, data marketplaces and Web3. The aim of this project is to go through the whole process of developing an AI algorithm with these new tools on the [Ocean Protocol](https://oceanprotocol.com/) infrastructure. We decided on the use case of generative models for art, since this is one of the few places that machine learning models are currently used in Web3. When finished, ownership and governance (e.g. of generated revenue) of the algorithm will be shared by the contributors. We run [hacking sessions](#-community) on Thursdays at 17:30 UTC where all are welcome to join and contribute.
 
