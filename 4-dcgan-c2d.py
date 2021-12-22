@@ -5,11 +5,12 @@ import argparse
 import os
 import random
 from pathlib import Path
+import pickle
 import time
 import numpy as np
-# import matplotlib.pyplot as plt
-# import matplotlib.animation as animation
-# import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import matplotlib.image as mpimg
 
 import torch
 import torch.nn as nn
@@ -65,13 +66,14 @@ def run_dcgan(local=False):
     if not results_dir.exists():
         results_dir.mkdir()
 
-    # img0 = mpimg.imread(teal_images[0])
-    # img1 = mpimg.imread(teal_images[1])
-    # fig, ax = plt.subplots(1,2)
-    # ax[0].imshow(img0)
-    # ax[1].imshow(img1)
-    # [a.axis('off') for a in ax]
-    # plt.savefig(results_dir / "sample.png")
+    if local:
+        img0 = mpimg.imread(teal_images[0])
+        img1 = mpimg.imread(teal_images[1])
+        fig, ax = plt.subplots(1,2)
+        ax[0].imshow(img0)
+        ax[1].imshow(img1)
+        [a.axis('off') for a in ax]
+        plt.savefig(results_dir / "sample.png")
 
     # Set random seed for reproducibility
     manualSeed = 999
@@ -88,7 +90,7 @@ def run_dcgan(local=False):
     nz = 100
     ngf = 64
     ndf = 64
-    num_epochs = 1
+    num_epochs = 5
     lr = 0.0002
     beta1 = 0.5
     ngpu = 1
@@ -302,25 +304,31 @@ def run_dcgan(local=False):
 
             iters += 1
 
-    # plt.figure(figsize=(10,5))
-    # plt.title("Generator and Discriminator Loss During Training")
-    # plt.plot(G_losses,label="G")
-    # plt.plot(D_losses,label="D")
-    # plt.xlabel("iterations")
-    # plt.ylabel("Loss")
-    # plt.legend()
-    # plt.savefig(results_dir / "loss.png")
+    if local:
+        plt.figure(figsize=(10,5))
+        plt.title("Generator and Discriminator Loss During Training")
+        plt.plot(G_losses,label="G")
+        plt.plot(D_losses,label="D")
+        plt.xlabel("iterations")
+        plt.ylabel("Loss")
+        plt.legend()
+        plt.savefig(results_dir / "loss.png")
 
-    # #%%capture
-    # fig = plt.figure(figsize=(20,20))
-    # plt.axis("off")
-    # ims = [[plt.imshow(np.transpose(i,(1,2,0)), animated=True)] for i in img_list]
-    # # ani = animation.ArtistAnimation(fig, ims, interval=1000, repeat_delay=1000, blit=True)
+        #%%capture
+        fig = plt.figure(figsize=(20,20))
+        plt.axis("off")
+        ims = [[plt.imshow(np.transpose(i,(1,2,0)), animated=True)] for i in img_list]
+        # ani = animation.ArtistAnimation(fig, ims, interval=1000, repeat_delay=1000, blit=True)
 
-    # fig = plt.figure(figsize=(20,20))
-    # plt.axis("off")
-    # plt.imshow(img_list[-1].permute(1,2,0))
-    # plt.savefig(results_dir / "gen.png")
+        fig = plt.figure(figsize=(20,20))
+        plt.axis("off")
+        plt.imshow(img_list[-1].permute(1,2,0))
+        plt.savefig(results_dir / "gen.png")
+
+    filename = results_dir / 'punks.pickle' if local else "/data/outputs/result"
+    with open(filename, 'wb') as pickle_file:
+        print(f"Pickling results in {filename}")
+        pickle.dump(img_list[-1], pickle_file)
 
     t1 = time.time()
     total = t1-t0
