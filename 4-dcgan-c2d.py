@@ -1,5 +1,6 @@
 # The code for the DCGAN generative model is taken from the official PyTorch docs https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html.
 
+import json
 import sys
 import argparse
 import os
