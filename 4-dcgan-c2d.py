@@ -1,17 +1,18 @@
 # The code for the DCGAN generative model is taken from the official PyTorch docs https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html.
 
-import json
-import sys
 import argparse
+import json
+import logging
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import matplotlib.image as mpimg
+import numpy as np
 import os
 import random
 from pathlib import Path
 import pickle
+import sys
 import time
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-import matplotlib.image as mpimg
 
 import torch
 import torch.nn as nn
@@ -28,7 +29,7 @@ def get_input(local=False):
         print("Reading local punks directory.")
 
         # Root directory for dataset
-        dataroot = Path('data/punks')
+        dataroot = Path('data/punks/tealpunks')
         # dataroot = Path('data/punks-sample')
         # dataroot = Path('data/celeba')
 
@@ -57,10 +58,9 @@ def run_dcgan(local=False):
         print("Could not retrieve dataroot.")
         return
 
-    teal_dir = dataroot / "tealpunks"
+    # logger.info('test')
 
-    # clear_images = sorted(list(clear_dir.glob('*')))
-    teal_images = sorted(list(teal_dir.glob('*')))
+    teal_images = sorted(list(dataroot.glob('*')))
 
     results_dir = Path('results')
 
@@ -98,7 +98,7 @@ def run_dcgan(local=False):
 
     # We can use an image folder dataset the way we have it setup.
     # Create the dataset
-    dataset = dset.ImageFolder(root=dataroot,
+    dataset = dset.ImageFolder(root=dataroot.parent,
                             transform=transforms.Compose([
                                 transforms.Resize(image_size),
                                 transforms.CenterCrop(image_size),
