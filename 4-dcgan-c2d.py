@@ -29,11 +29,11 @@ def get_input(local=False):
         print("Reading local punks directory.")
 
         # Root directory for dataset
-        dataroot = Path('data/punks/tealpunks')
-        # dataroot = Path('data/punks-sample')
-        # dataroot = Path('data/celeba')
+        filename = Path('data/punks/tealpunks')
+        # filename = Path('data/punks-sample')
+        # filename = Path('data/celeba')
 
-        return dataroot
+        return filename
 
     dids = os.getenv('DIDS', None)
 
@@ -53,14 +53,19 @@ def run_dcgan(local=False):
 
     t0 = time.time()
 
-    dataroot = get_input(local)
-    if not dataroot:
-        print("Could not retrieve dataroot.")
+    filename = get_input(local)
+    if not filename:
+        print("Could not retrieve filename.")
         return
 
-    # logger.info('test')
 
-    teal_images = sorted(list(dataroot.glob('*')))
+    with open(filename) as datafile:
+        print(datafile)
+        datafile.seek(0)
+        print('@@@', datafile)
+
+
+    teal_images = sorted(list(filename.glob('*')))
 
     print(teal_images)
 
@@ -100,7 +105,7 @@ def run_dcgan(local=False):
 
     # We can use an image folder dataset the way we have it setup.
     # Create the dataset
-    dataset = dset.ImageFolder(root=dataroot.parent,
+    dataset = dset.ImageFolder(root=filename.parent,
                             transform=transforms.Compose([
                                 transforms.Resize(image_size),
                                 transforms.CenterCrop(image_size),
