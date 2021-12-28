@@ -14,15 +14,15 @@ import pickle
 import sys
 import time
 
-# import torch
-# import torch.nn as nn
-# import torch.nn.parallel
-# import torch.backends.cudnn as cudnn
-# import torch.optim as optim
-# import torch.utils.data
-# import torchvision.datasets as dset
-# import torchvision.transforms as transforms
-# import torchvision.utils as vutils
+import torch
+import torch.nn as nn
+import torch.nn.parallel
+import torch.backends.cudnn as cudnn
+import torch.optim as optim
+import torch.utils.data
+import torchvision.datasets as dset
+import torchvision.transforms as transforms
+import torchvision.utils as vutils
 
 def get_input(local=False):
     if local:
@@ -43,9 +43,9 @@ def get_input(local=False):
 
     dids = json.loads(dids)
 
-    cwd = os.getcwd()
-    print('cwd', cwd)
-    print('ls', os.listdir(cwd))
+    # cwd = os.getcwd()
+    # print('cwd', cwd)
+    # print('ls', os.listdir(cwd))
 
     for did in dids:
         filename = Path(f'data/inputs/{did}/0')  # 0 for metadata service
