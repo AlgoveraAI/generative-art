@@ -47,6 +47,8 @@ def get_input(local=False):
         filename = Path(f'data/inputs/{did}/0')  # 0 for metadata service
         print(f"Reading asset file {filename}.")
 
+        print('inputs', os.listdir('data/inputs'))
+
         return filename
 
 def run_dcgan(local=False):
