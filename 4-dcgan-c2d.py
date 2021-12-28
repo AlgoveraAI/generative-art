@@ -48,7 +48,8 @@ def get_input(local=False):
     
 
     for did in dids:
-        print('ls', os.listdir(f'/data/inputs/{did}/0'))
+        print('ls', f'/data/inputs/{did}/0')
+        print('ls2', os.listdir(f'/data/inputs/'))
         filename = Path(f'/data/inputs/{did}/0')  # 0 for metadata service
         print(f"Reading asset file {filename}.")
         print('type', type(os.listdir(f'/data/inputs/{did}/0/')[0]))
