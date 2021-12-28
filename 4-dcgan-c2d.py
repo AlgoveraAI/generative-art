@@ -13,6 +13,7 @@ from pathlib import Path
 import pickle
 import sys
 import time
+from PIL import Image
 
 import torch
 import torch.nn as nn
@@ -70,6 +71,8 @@ def run_dcgan(local=False):
         print(type(datafile))
         print(datafile)
         datafile.seek(0)
+        print('@@@', datafile)
+        img = Image.open(datafile)
         print('@@@', datafile)
 
 
