@@ -48,7 +48,7 @@ def get_input(local=False):
     
 
     for did in dids:
-        print('ls', os.listdir(f'/data/inputs/{did}'))
+        print('ls', os.listdir(f'/data/inputs/{did}/0'))
         filename = Path(f'/data/inputs/{did}/0')  # 0 for metadata service
         print(f"Reading asset file {filename}.")
 
@@ -65,6 +65,7 @@ def run_dcgan(local=False):
 
 
     with open(filename) as datafile:
+        print(type(datafile))
         print(datafile)
         datafile.seek(0)
         print('@@@', datafile)
