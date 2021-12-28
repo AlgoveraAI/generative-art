@@ -52,7 +52,7 @@ def get_input(local=False):
         print('ls2', os.listdir(f'/data/inputs/'))
         filename = Path(f'/data/inputs/{did}/0')  # 0 for metadata service
         print(f"Reading asset file {filename}.")
-        print('type', type(os.listdir(f'/data/inputs/{did}/0/')[0]))
+        # print('type', type(os.listdir(f'/data/inputs/{did}/0/')[0]))
 
 
         return filename
@@ -66,12 +66,13 @@ def run_dcgan(local=False):
         print("Could not retrieve filename.")
         return
 
-
+    from PIL import Image
     with open(filename) as datafile:
         print(type(datafile))
         print(datafile)
         datafile.seek(0)
-        print('@@@', datafile)
+        img = Image.open(datafile)
+        print('@@@', img)
 
 
     teal_images = sorted(list(filename.glob('*')))
