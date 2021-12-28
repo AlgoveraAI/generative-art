@@ -44,7 +44,7 @@ def get_input(local=False):
     dids = json.loads(dids)
 
     for did in dids:
-        filename = f'data/inputs/{did}/0'  # 0 for metadata service
+        filename = Path(f'data/inputs/{did}/0')  # 0 for metadata service
         print(f"Reading asset file {filename}.")
 
         return filename
