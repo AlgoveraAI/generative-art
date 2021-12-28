@@ -62,6 +62,8 @@ def run_dcgan(local=False):
 
     teal_images = sorted(list(dataroot.glob('*')))
 
+    print(teal_images)
+
     results_dir = Path('results')
 
     if not results_dir.exists():
