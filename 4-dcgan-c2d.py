@@ -43,9 +43,9 @@ def get_input(local=False):
 
     dids = json.loads(dids)
 
-    # cwd = os.getcwd()
-    # print('cwd', cwd)
-    # print('ls', os.listdir(cwd))
+    cwd = os.getcwd()
+    print('cwd', cwd)
+    print('ls', os.listdir(cwd))
 
     for did in dids:
         filename = Path(f'data/inputs/{did}/0')  # 0 for metadata service
