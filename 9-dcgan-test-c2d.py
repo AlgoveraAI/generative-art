@@ -3,10 +3,17 @@ import numpy as np
 import os 
 from pathlib import Path
 import pickle
+import random
 import sys
 
 import torch
 import torch.nn as nn
+import torch.nn.parallel
+import torch.backends.cudnn as cudnn
+import torch.optim as optim
+import torch.utils.data
+import torchvision.datasets as dset
+import torchvision.transforms as transforms
 import torchvision.utils as vutils
 
 def test_dcgan(local=False):
@@ -16,9 +23,10 @@ def test_dcgan(local=False):
     if not results_dir.exists():
         results_dir.mkdir()
 
-    os.system("wget https://www.dropbox.com/s/p3pjgmpiki7w0ur/netG.pth")
-
     weights_path = Path("netG.pth")
+
+    if not weights_path.exists():
+        os.system("wget https://www.dropbox.com/s/p3pjgmpiki7w0ur/netG.pth")
 
     nc = 3
     nz = 100
@@ -66,7 +74,7 @@ def test_dcgan(local=False):
     if (device.type == 'cuda') and (ngpu > 1):
         netG = nn.DataParallel(netG, list(range(ngpu)))
 
-    netG.load_state_dict(torch.load(weights_path))
+    netG.load_state_dict(torch.load(weights_path, map_location=torch.device('cpu')))
 
     netG.eval()
 
